@@ -51,9 +51,10 @@
       text-align:center; padding:80px 20px 40px; position:relative;
       margin-top:30px;
     }
+    /* LOGO agrandi pour remplir le cercle */
     header img{
-      width:120px; height:120px; border-radius:50%; object-fit:cover;
-      border:3px solid rgba(255,255,255,0.9); box-shadow:0 10px 30px rgba(255,115,0,0.12);
+      width:180px; height:180px; border-radius:50%; object-fit:cover;
+      border:4px solid rgba(255,255,255,0.95); box-shadow:0 14px 40px rgba(255,115,0,0.16);
       animation:float 4s ease-in-out infinite;
       background:#fff;
     }
@@ -73,13 +74,13 @@
 
     .courses{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px}
     .card{padding:14px;border-radius:12px;background:var(--glass); text-align:center}
-    .card img{width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:12px}
+    .card img{width:100%;height:200px;object-fit:cover;border-radius:8px;margin-bottom:12px}
     .card h3{margin:6px 0}
     .price{color:#cfefff;font-weight:700}
 
     form{display:block; margin-top:12px}
     input,select,textarea{width:100%;padding:10px;border-radius:8px;border:none;margin-bottom:10px;outline:none;background:rgba(255,255,255,0.04);color:#fff}
-    .row{display:flex;gap:10px}
+    .row{display:flex;gap:10px;flex-wrap:wrap}
     .row .btn{flex:1}
 
     .btn{
@@ -91,22 +92,26 @@
 
     footer{color:rgba(255,255,255,0.7);text-align:center;padding:30px 10px;margin-top:30px}
 
-    /* Responsive tweaks */
+    /* small screens */
     @media(max-width:640px){
       header h1{font-size:1.6rem}
       .nav{left:12px; transform:none; top:12px}
       body{font-size:15px}
+      header img{width:140px;height:140px}
     }
+
+    /* helper */
+    .contact-card{padding:12px;background:rgba(255,255,255,0.03);border-radius:10px}
   </style>
 </head>
 <body>
 
   <!-- NAV -->
   <nav class="nav" aria-label="Main navigation">
-    <a href="#home">Accueil</a>
-    <a href="#about">À propos</a>
-    <a href="#formations">Formations</a>
-    <a href="#contact">Contact</a>
+    <a href="index.html">Accueil</a>
+    <a href="a-propos.html">À propos</a>
+    <a href="formations.html">Formations</a>
+    <a href="contact.html">Contact</a>
   </nav>
 
   <!-- HEADER / BANNER -->
@@ -130,7 +135,7 @@
       <div class="courses">
         <!-- Informatique -->
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80" alt="Informatique">
+          <img src="informatique.jpg" alt="Informatique">
           <h3>Informatique — Bureautique & Maintenance</h3>
           <p class="muted">Word, Excel, PowerPoint, Internet et maintenance de base.</p>
           <p class="price">20 000 XOF</p>
@@ -138,15 +143,15 @@
 
         <!-- Infographie -->
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80" alt="Infographie">
+          <img src="infographie.jpg" alt="Infographie">
           <h3>Infographie — Photoshop & Illustrator</h3>
           <p class="muted">Design visuel, logos, affiches et supports marketing.</p>
           <p class="price">30 000 XOF</p>
         </div>
 
-        <!-- Voix Off -->
+        <!-- Voix Off (image locale) -->
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1590608897129-79da98d1593c?auto=format&fit=crop&w=900&q=80" alt="Voix Off">
+          <img src="voixoff.jpg" alt="Voix Off">
           <h3>Voix Off — Technique & Studio</h3>
           <p class="muted">Technique vocale, enregistrement, montage audio et livraison.</p>
           <p class="price">25 000 XOF</p>
@@ -154,56 +159,75 @@
       </div>
     </section>
 
-    <!-- INSCRIPTION + PAIEMENT -->
+    <!-- INSCRIPTION & PAIEMENT -->
     <section id="inscription" class="section" style="margin-top:20px">
-      <h2>Inscription & Paiement</h2>
+      <h2>Inscription</h2>
 
-      <form id="enroll-form" onsubmit="return false;">
-        <input type="text" name="fullName" placeholder="Nom complet" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <select name="courseId" required>
-          <option value="">-- Choisissez une formation --</option>
-          <option value="informatique">Informatique — 20 000 XOF</option>
-          <option value="infographie">Infographie — 30 000 XOF</option>
-          <option value="voixoff">Voix Off — 25 000 XOF</option>
-        </select>
+      <form id="register-form">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <input type="text" name="prenom" placeholder="Prénom" required>
+          <input type="text" name="nom" placeholder="Nom" required>
+        </div>
 
-        <div class="row">
-          <button type="button" id="pay-wave" class="btn" style="background:linear-gradient(90deg,#00c0ff,#0088ff)">Payer avec Wave</button>
-          <button type="button" id="pay-orange" class="btn" style="background:linear-gradient(90deg,#ff9a2a,#ff6b00)">Payer avec Orange Money</button>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px">
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="tel" name="telephone" placeholder="Téléphone (ex: +22177...)" required>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px">
+          <select name="formation" required>
+            <option value="">-- Choisissez une formation --</option>
+            <option value="Informatique">Informatique — 20 000 XOF</option>
+            <option value="Infographie">Infographie — 30 000 XOF</option>
+            <option value="Voix Off">Voix Off — 25 000 XOF</option>
+          </select>
+
+          <input type="text" name="lieu" placeholder="Lieu (ville/centre)" required>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px">
+          <select name="niveau" required>
+            <option value="">-- Niveau d'études --</option>
+            <option value="Aucun">Aucun</option>
+            <option value="Primaire">Primaire</option>
+            <option value="Secondaire">Secondaire</option>
+            <option value="Bac">Bac</option>
+            <option value="Licence">Licence</option>
+            <option value="Master">Master</option>
+            <option value="Autre">Autre</option>
+          </select>
+
+          <input type="text" name="ville" placeholder="Ville" required>
+        </div>
+
+        <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+          <button type="submit" class="btn">Confirmer et envoyer</button>
+          <button type="button" id="btn-pay-web" class="btn secondary">Payer via Web</button>
+          <button type="button" id="btn-pay-wave" class="btn" style="background:linear-gradient(90deg,#00c0ff,#0088ff)">Payer via Wave</button>
+          <button type="button" id="btn-pay-orange" class="btn" style="background:linear-gradient(90deg,#ff9a2a,#ff6b00)">Payer via Orange Money</button>
         </div>
       </form>
 
-      <div id="status" style="margin-top:14px;color:#fff"></div>
+      <div id="register-status" style="margin-top:14px;color:#fff"></div>
     </section>
 
     <!-- CONTACT -->
     <section id="contact" class="section" style="margin-top:20px">
       <h2>Contact</h2>
-      <p class="muted">Contactez-nous pour toute question, demande de formation sur mesure, ou partenariat.</p>
+      <p class="muted">Contactez-nous pour toute question, demande de formation sur mesure ou partenariat.</p>
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
-        <div style="padding:12px;background:rgba(255,255,255,0.03);border-radius:10px">
-          <h3>WhatsApp / Téléphone</h3>
-          <p class="muted">Wave (principal) : <strong>+221 77 541 42 27</strong></p>
-          <p><a class="btn" href="https://wa.me/221775414227" target="_blank">Message Wave</a></p>
-          <p class="muted" style="margin-top:10px">Orange Money : <strong>+221 78 502 31 82</strong></p>
-          <p><a class="btn" href="https://wa.me/221785023182" target="_blank">Message Orange</a></p>
+        <div class="contact-card">
+          <h3>Contact Wave</h3>
+          <p class="muted">+221 77 541 42 27</p>
+          <!-- bouton "Message" ouvre WhatsApp avec texte pré-rempli -->
+          <p><a class="btn" id="wa-wave" href="#" target="_blank">Message</a></p>
         </div>
 
-        <div style="padding:12px;background:rgba(255,255,255,0.03);border-radius:10px">
-          <h3>Email</h3>
-          <p class="muted">Écris-nous : <a href="mailto:wilanethiernoabdourahmane@gmail.com" class="muted">wilanethiernoabdourahmane@gmail.com</a></p>
-          <h3 style="margin-top:12px">Envoyer un message</h3>
-          <form id="contact-form" onsubmit="return false;">
-            <input type="text" name="name" placeholder="Votre nom" required>
-            <input type="email" name="contactEmail" placeholder="Votre email" required>
-            <textarea name="message" rows="4" placeholder="Votre message" style="width:100%;padding:10px;border-radius:8px;border:none;background:rgba(255,255,255,0.04);color:#fff"></textarea>
-            <div style="margin-top:8px">
-              <button id="send-message" class="btn secondary">Envoyer (simulé)</button>
-            </div>
-            <div id="contact-status" style="margin-top:8px;color:#fff"></div>
-          </form>
+        <div class="contact-card">
+          <h3>Contact Orange Money</h3>
+          <p class="muted">+221 78 502 31 82</p>
+          <p><a class="btn" id="wa-orange" href="#" target="_blank">Message</a></p>
         </div>
       </div>
     </section>
@@ -214,76 +238,180 @@
   </footer>
 
   <script>
-    // Course data
-    const COURSES = [
-      { id: "informatique", name: "Informatique", price: 20000, currency: "XOF" },
-      { id: "infographie", name: "Infographie", price: 30000, currency: "XOF" },
-      { id: "voixoff", name: "Voix Off", price: 25000, currency: "XOF" }
-    ];
+    /*******************************
+     * CONFIGURATION (Personnalise)
+     *******************************/
+    const OWNER_EMAIL = "wilanethiernoabdourahmane@gmail.com"; // email destinataire des inscriptions
+    const PAYMENT_WEB_LINK = "https://example.com/checkout"; // <-- remplace par ton lien web de paiement
+    const WHATSAPP_WAVE = "+221775414227";   // sans espaces ni +
+    const WHATSAPP_ORANGE = "+221785023182"; // sans espaces ni +
+    // Pré-remplisable message pour contact rapide (remplacera {msg} ci-dessous)
+    const CONTACT_MESSAGE = "Bonjour, je souhaite avoir des informations sur vos formations.";
 
-    const statusDiv = document.getElementById('status');
+    /* Si tu veux envoyer automatiquement depuis le client (sans ouvrir le mail client),
+       tu peux utiliser EmailJS ou un service similaire. Remplace ces valeurs si tu utilises EmailJS.
+       Si EmailJS n'est pas configuré, le code fait fallback vers mailto (ouvre la messagerie du visiteur). */
+    const EMAILJS_USER_ID = "";    // ex: 'user_XXXXXXXX'  (laisser vide si pas utilisé)
+    const EMAILJS_SERVICE_ID = ""; // ex: 'service_xxx'
+    const EMAILJS_TEMPLATE_ID = ""; // ex: 'template_xxx'
 
-    // Wave payment: show instructions and WhatsApp link
-    document.getElementById('pay-wave').addEventListener('click', () => {
-      const fullName = document.querySelector('input[name=fullName]').value.trim();
-      const email = document.querySelector('input[name=email]').value.trim();
-      const courseId = document.querySelector('select[name=courseId]').value;
-      if(!fullName || !email || !courseId){
-        statusDiv.textContent = 'Remplissez votre nom, email et choisissez une formation.';
+    /***********************
+     * Fonctions utilitaires
+     ***********************/
+    function urlEncode(str){ return encodeURIComponent(str).replace(/'/g,"%27"); }
+
+    // Construire lien WhatsApp avec texte URL-encodé
+    function whatsappLink(phone, text){
+      // phone expected like '+221775414227' or '221775414227' or '+221775414227'
+      let p = phone.replace(/\+/g,'').replace(/\s+/g,'');
+      return "https://wa.me/" + p + "?text=" + encodeURIComponent(text);
+    }
+
+    // Afficher message de statut
+    function setStatus(msg, color = "#cfefff"){
+      const el = document.getElementById('register-status');
+      el.style.color = color;
+      el.innerHTML = msg;
+    }
+
+    /************************
+     * Préparer boutons WA
+     ************************/
+    document.getElementById('wa-wave').href = whatsappLink(WHATSAPP_WAVE, CONTACT_MESSAGE);
+    document.getElementById('wa-orange').href = whatsappLink(WHATSAPP_ORANGE, CONTACT_MESSAGE);
+
+    /************************
+     * Gestion du formulaire
+     ************************/
+    document.getElementById('register-form').addEventListener('submit', async function(ev){
+      ev.preventDefault();
+      setStatus('');
+      const f = ev.target;
+      const data = {
+        prenom: f.prenom.value.trim(),
+        nom: f.nom.value.trim(),
+        email: f.email.value.trim(),
+        telephone: f.telephone.value.trim(),
+        formation: f.formation.value,
+        lieu: f.lieu.value.trim(),
+        niveau: f.niveau.value,
+        ville: f.ville.value.trim()
+      };
+      // Validation simple
+      if(!data.prenom || !data.nom || !data.email || !data.telephone || !data.formation){
+        setStatus("Remplissez tous les champs obligatoires.", "#ffb3b3");
         return;
       }
-      const course = COURSES.find(c=>c.id===courseId);
-      statusDiv.innerHTML = `
-        <div style="padding:12px;background:rgba(0,0,0,0.25);border-radius:10px">
-          <p>💳 <strong>Paiement Wave</strong></p>
-          <p>Envoyez <strong>${course.price.toLocaleString()} ${course.currency}</strong> au numéro : <strong>+221 77 541 42 27</strong></p>
-          <p>Après paiement, envoyez la capture via WhatsApp pour valider : <a href="https://wa.me/221775414227" target="_blank" class="btn">Contacter +221775414227</a></p>
-        </div>
-      `;
-    });
 
-    // Orange Money payment
-    document.getElementById('pay-orange').addEventListener('click', () => {
-      const fullName = document.querySelector('input[name=fullName]').value.trim();
-      const email = document.querySelector('input[name=email]').value.trim();
-      const courseId = document.querySelector('select[name=courseId]').value;
-      if(!fullName || !email || !courseId){
-        statusDiv.textContent = 'Remplissez votre nom, email et choisissez une formation.';
-        return;
+      // Tenter EmailJS si configuré
+      if(EMAILJS_USER_ID && EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID){
+        try{
+          // charger EmailJS si nécessaire (client-side)
+          if(typeof emailjs === 'undefined'){
+            const s = document.createElement('script');
+            s.src = 'https://cdn.emailjs.com/sdk/3.2.0/email.min.js';
+            document.head.appendChild(s);
+            await new Promise(r=>s.onload=r);
+            emailjs.init(EMAILJS_USER_ID);
+          }
+          const templateParams = {
+            prenom: data.prenom,
+            nom: data.nom,
+            email: data.email,
+            telephone: data.telephone,
+            formation: data.formation,
+            lieu: data.lieu,
+            niveau: data.niveau,
+            ville: data.ville,
+            owner_email: OWNER_EMAIL
+          };
+          await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+          setStatus("Inscription envoyée — nous avons reçu vos informations. Vérifiez votre WhatsApp pour le paiement.", "#cfefff");
+        }catch(err){
+          console.error(err);
+          setStatus("Erreur lors de l'envoi automatique. Nous ouvrons votre messagerie pour envoyer les informations.", "#ffb3b3");
+          // fallback to mailto below
+          fallbackMailTo(data);
+        }
+      } else {
+        // fallback : ouvrir mail client (mailto:) avec contenu pré-rempli pour t'envoyer l'email
+        fallbackMailTo(data);
       }
-      const course = COURSES.find(c=>c.id===courseId);
-      statusDiv.innerHTML = `
-        <div style="padding:12px;background:rgba(0,0,0,0.25);border-radius:10px">
-          <p>📱 <strong>Paiement Orange Money</strong></p>
-          <p>Envoyez <strong>${course.price.toLocaleString()} ${course.currency}</strong> au numéro : <strong>+221 78 502 31 82</strong></p>
-          <p>Après paiement, envoyez la capture via WhatsApp pour valider : <a href="https://wa.me/221785023182" target="_blank" class="btn">Contacter +221785023182</a></p>
+
+      // Afficher options de paiement dynamiquement
+      showPaymentOptions(data);
+    });
+
+    // fallback : ouvrir le client mail du visiteur pour envoyer à OWNER_EMAIL
+    function fallbackMailTo(data){
+      const subject = "Nouvelle inscription - Wilane Création - " + data.formation;
+      const body =
+        "Inscription Wilane Création %0A%0A" +
+        "Prénom: " + encodeURIComponent(data.prenom) + "%0A" +
+        "Nom: " + encodeURIComponent(data.nom) + "%0A" +
+        "Email: " + encodeURIComponent(data.email) + "%0A" +
+        "Téléphone: " + encodeURIComponent(data.telephone) + "%0A" +
+        "Formation: " + encodeURIComponent(data.formation) + "%0A" +
+        "Lieu: " + encodeURIComponent(data.lieu) + "%0A" +
+        "Niveau d'études: " + encodeURIComponent(data.niveau) + "%0A" +
+        "Ville: " + encodeURIComponent(data.ville) + "%0A";
+      // ouverture du client mail
+      window.location.href = `mailto:${OWNER_EMAIL}?subject=${encodeURIComponent(subject)}&body=${body}`;
+    }
+
+    /************************
+     * Paiement après inscription
+     ************************/
+    function showPaymentOptions(data){
+      const status = document.getElementById('register-status');
+      // calcul montant selon formation
+      const priceMap = {
+        "Informatique": 20000,
+        "Infographie": 30000,
+        "Voix Off": 25000
+      };
+      const amount = priceMap[data.formation] || 0;
+      const formatted = amount.toLocaleString() + " XOF";
+
+      // message pré-rempli pour paiement (WhatsApp)
+      const payTextWave = `Bonjour, je confirme mon paiement pour la formation ${data.formation} (${formatted}). Nom: ${data.prenom} ${data.nom}. Téléphone: ${data.telephone}. Email: ${data.email}.`;
+      const payTextOrange = payTextWave; // même message
+
+      // éléments de paiement
+      status.innerHTML = `
+        <div style="padding:12px;background:rgba(0,0,0,0.32);border-radius:10px">
+          <p style="margin:0 0 8px">Inscription reçue pour <strong>${escapeHtml(data.formation)}</strong> — montant: <strong>${formatted}</strong></p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+            <a class="btn" href="${PAYMENT_WEB_LINK}" target="_blank">Payer via Web</a>
+            <a class="btn" style="background:linear-gradient(90deg,#00c0ff,#0088ff)" href="${whatsappLink(WHATSAPP_WAVE,payTextWave)}" target="_blank">Payer via Wave</a>
+            <a class="btn" style="background:linear-gradient(90deg,#ff9a2a,#ff6b00)" href="${whatsappLink(WHATSAPP_ORANGE,payTextOrange)}" target="_blank">Payer via Orange Money</a>
+          </div>
+          <p style="margin-top:10px;font-size:0.9em;color:#ddd">Après paiement, envoyez la capture via WhatsApp au même numéro pour confirmation.</p>
         </div>
       `;
+    }
+
+    // small helper to escape html in inserted text
+    function escapeHtml(text){
+      return String(text).replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; });
+    }
+
+    /************************
+     * Boutons paiement directs (si l'utilisateur clique avant inscription)
+     ************************/
+    document.getElementById('btn-pay-web').addEventListener('click', ()=> {
+      window.open(PAYMENT_WEB_LINK, '_blank');
+    });
+    document.getElementById('btn-pay-wave').addEventListener('click', ()=> {
+      // open simple payment message (generic)
+      const text = "Bonjour, je souhaite payer une formation. Merci.";
+      window.open(whatsappLink(WHATSAPP_WAVE, text), '_blank');
+    });
+    document.getElementById('btn-pay-orange').addEventListener('click', ()=> {
+      const text = "Bonjour, je souhaite payer une formation via Orange Money. Merci.";
+      window.open(whatsappLink(WHATSAPP_ORANGE, text), '_blank');
     });
 
-    // Contact form (simulé — sans serveur)
-    document.getElementById('send-message').addEventListener('click', () => {
-      const name = document.querySelector('#contact-form [name=name]').value.trim();
-      const email = document.querySelector('#contact-form [name=contactEmail]').value.trim();
-      const message = document.querySelector('#contact-form [name=message]').value.trim();
-      const s = document.getElementById('contact-status');
-      if(!name || !email || !message){ s.textContent = 'Remplissez tous les champs.'; return; }
-      // Since there's no backend, we simulate success.
-      s.style.color = '#cfefff';
-      s.textContent = 'Message envoyé (simulation) — nous vous répondrons sur ' + email;
-      // Optionally you could instruct user to send email to real mailbox:
-      // window.location.href = `mailto:wilanethiernoabdourahmane@gmail.com?subject=Message%20depuis%20site%20Wilane&body=${encodeURIComponent(message)}`;
-    });
-
-    // Smooth scrolling when clicking nav anchors
-    document.querySelectorAll('.nav a').forEach(a=>{
-      a.addEventListener('click', (e)=>{
-        e.preventDefault();
-        const id = a.getAttribute('href').slice(1);
-        const el = document.getElementById(id);
-        if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
-      });
-    });
   </script>
 </body>
 </html>
