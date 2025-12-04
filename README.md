@@ -1,4 +1,3 @@
-
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
@@ -8,44 +7,30 @@
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
     :root{
       --accent:#ff7300;
-      --dark:#111;
-      --muted:rgba(255,255,255,0.8);
-      --glass: rgba(255,255,255,0.08);
+      --dark:#0bbb1a;
+      --muted:rgba(255, 255, 255, 0.959);
+      --glass: rgba(235, 23, 8, 0.986);
     }
     *{box-sizing:border-box}
     body{
       margin:0;
       font-family:Poppins,system-ui,Arial;
-      color:#fff;
-      background:#000;
+      color:#ffffff;
+      background:#ff1e00;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       overflow-x:hidden;
     }
-
-    /* Animated gradient background (laser-like) */
-    body::before{
-      content:"";
-      position:fixed; inset:0;
-      background: linear-gradient(270deg,#ff6600,#ff3b00,#1a1a1a,#0b0b0b);
-      background-size: 1200% 1200%;
-      filter: blur(36px) saturate(120%);
-      animation: bgMove 12s linear infinite;
-      z-index:-2;
-      opacity:0.95;
-    }
-    @keyframes bgMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-
     /* top navigation */
     .nav {
       position:fixed; top:12px; left:50%; transform:translateX(-50%);
       display:flex; gap:14px; z-index:40;
-      background:linear-gradient(90deg, rgba(0,0,0,0.35), rgba(255,255,255,0.02));
+      background:linear-gradient(90deg, rgba(2, 5, 194, 0.801), rgb(15, 12, 197));
       padding:8px 14px; border-radius:999px; backdrop-filter:blur(6px);
-      box-shadow:0 8px 30px rgba(0,0,0,0.5);
+      box-shadow:0 8px 30px rgba(252, 252, 252, 0.767);
     }
     .nav a{color:var(--muted); text-decoration:none; padding:8px 12px; border-radius:8px; font-weight:600}
-    .nav a:hover{background:rgba(255,255,255,0.04); color:#fff}
+    .nav a:hover{background:rgba(4, 184, 13, 0.04); color:#fff}
 
     header{
       text-align:center; padding:80px 20px 40px; position:relative;
@@ -54,7 +39,7 @@
     /* LOGO agrandi pour remplir le cercle */
     header img{
       width:180px; height:180px; border-radius:50%; object-fit:cover;
-      border:4px solid rgba(255,255,255,0.95); box-shadow:0 14px 40px rgba(255,115,0,0.16);
+      border:4px solid rgba(255,255,255,0.95); box-shadow:0 14px 40px rgb(255, 81, 0);
       animation:float 4s ease-in-out infinite;
       background:#fff;
     }
@@ -67,8 +52,8 @@
 
     .section{
       margin-top:28px;
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      padding:18px;border-radius:14px; box-shadow:0 6px 20px rgba(0,0,0,0.5);
+      background:linear-gradient(180deg, rgb(37, 9, 129), rgba(50, 5, 173, 0.863));
+      padding:18px;border-radius:14px; box-shadow:0 6px 20px rgba(255, 255, 255, 0.966);
       backdrop-filter: blur(6px);
     }
 
@@ -79,18 +64,18 @@
     .price{color:#cfefff;font-weight:700}
 
     form{display:block; margin-top:12px}
-    input,select,textarea{width:100%;padding:10px;border-radius:8px;border:none;margin-bottom:10px;outline:none;background:rgba(255,255,255,0.04);color:#fff}
+    input,select,textarea{width:100%;padding:10px;border-radius:8px;border:none;margin-bottom:10px;outline:none;background:rgba(255, 53, 2, 0.952);color:#fff}
     .row{display:flex;gap:10px;flex-wrap:wrap}
     .row .btn{flex:1}
 
     .btn{
       display:inline-block;padding:10px 14px;border-radius:10px;background:var(--dark);color:#fff;text-decoration:none;border:none;cursor:pointer;font-weight:700;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
     }
-    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.08)}
+    .btn.secondary{background:transparent;border:1px solid rgba(255, 255, 255, 0.842)}
     .muted{color:rgba(255,255,255,0.8)}
 
-    footer{color:rgba(255,255,255,0.7);text-align:center;padding:30px 10px;margin-top:30px}
+    footer{color:rgba(255, 255, 255, 0.7);text-align:center;padding:30px 10px;margin-top:30px}
 
     /* small screens */
     @media(max-width:640px){
@@ -125,8 +110,30 @@
     <!-- ABOUT -->
     <section id="about" class="section">
       <h2>À propos</h2>
-      <p class="muted">Wilane Création est un centre de formation multimédia dédié à la montée en compétences : informatique (bureautique & maintenance), infographie (design, retouche) et voix-off (technique & production). Notre approche est pratique, accessible aux débutants et orientée vers l’emploi.</p>
-      <p style="margin-top:8px">Email : <a href="mailto:wilanethiernoabdourahmane@gmail.com" class="muted">wilanethiernoabdourahmane@gmail.com</a> • WhatsApp : <span class="muted">+221 77 541 42 27</span>, <span class="muted">+221 78 502 31 82</span></p>
+      <p class="muted">Wilane Création est un centre de formation multimédia dédié à la montée en compétences.
+Nous formons aux métiers de l’informatique (bureautique & maintenance), de l’infographie (design graphique, retouche d’images) et de la voix-off (technique, enregistrement et production).
+Notre pédagogie est pratique, accessible aux débutants et orientée vers l’emploi, afin d’accompagner chaque apprenant vers une compétence professionnelle réelle et immédiatement exploitable.
+En plus de la formation, Wilane Création fonctionne également comme une agence de communication et un prestataire professionnel.
+Nous proposons des services payants, réalisés sur commande, pour particuliers, entreprises, boutiques, créateurs de contenus et organisations.
+
+Nos prestations incluent :
+
+Publicité digitale et communication visuelle (contenus promotionnels, annonces, marketing en ligne)
+
+Création graphique professionnelle : logos, affiches, flyers, cartes de visite, bannières, identités visuelles
+
+Montage vidéo professionnel
+
+Tournage vidéo pour événements, publicités et contenus promotionnels
+
+Montage photo, retouches avancées et habillages visuels
+
+Voix-off professionnelle pour publicités, vidéos, documentaires et entreprises
+
+Et tout autre service lié à la communication multimédia et au graphisme professionnel
+
+Chaque service est facturé selon la demande du client, avec un travail rigoureux, créatif et livré dans les délais .</p>
+      <p style="margin-top:8px">Email : <a href="mailto:wilanethiernoabdourahmane@gmail.com" class="muted">wilanethiernoabdourahmane@gmail.com</a> </p>
     </section>
 
     <!-- FORMATIONS -->
@@ -204,11 +211,11 @@
           <button type="submit" class="btn">Confirmer et envoyer</button>
           <button type="button" id="btn-pay-web" class="btn secondary">Payer via Web</button>
           <button type="button" id="btn-pay-wave" class="btn" style="background:linear-gradient(90deg,#00c0ff,#0088ff)">Payer via Wave</button>
-          <button type="button" id="btn-pay-orange" class="btn" style="background:linear-gradient(90deg,#ff9a2a,#ff6b00)">Payer via Orange Money</button>
+          <button type="button" id="btn-pay-orange" class="btn" style="background:linear-gradient(90deg,#ff432a,#ff3c00)">Payer via Orange Money</button>
         </div>
       </form>
 
-      <div id="register-status" style="margin-top:14px;color:#fff"></div>
+      <div id="register-status" style="margin-top:14px;color:#fbff1c"></div>
     </section>
 
     <!-- CONTACT -->
@@ -218,14 +225,14 @@
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
         <div class="contact-card">
-          <h3>Contact Wave</h3>
+          <h3>Contact WhatsApp</h3>
           <p class="muted">+221 77 541 42 27</p>
           <!-- bouton "Message" ouvre WhatsApp avec texte pré-rempli -->
           <p><a class="btn" id="wa-wave" href="#" target="_blank">Message</a></p>
         </div>
 
         <div class="contact-card">
-          <h3>Contact Orange Money</h3>
+          <h3>Contact Appel</h3>
           <p class="muted">+221 78 502 31 82</p>
           <p><a class="btn" id="wa-orange" href="#" target="_blank">Message</a></p>
         </div>
@@ -356,7 +363,7 @@
         "Niveau d'études: " + encodeURIComponent(data.niveau) + "%0A" +
         "Ville: " + encodeURIComponent(data.ville) + "%0A";
       // ouverture du client mail
-      window.location.href = `mailto:${OWNER_EMAIL}?subject=${encodeURIComponent(subject)}&body=${body}`;
+      window.location.href = mailto:${OWNER_EMAIL}?subject=${encodeURIComponent(subject)}&body=${body};
     }
 
     /************************
@@ -374,7 +381,7 @@
       const formatted = amount.toLocaleString() + " XOF";
 
       // message pré-rempli pour paiement (WhatsApp)
-      const payTextWave = `Bonjour, je confirme mon paiement pour la formation ${data.formation} (${formatted}). Nom: ${data.prenom} ${data.nom}. Téléphone: ${data.telephone}. Email: ${data.email}.`;
+      const payTextWave = Bonjour, je confirme mon paiement pour la formation ${data.formation} (${formatted}). Nom: ${data.prenom} ${data.nom}. Téléphone: ${data.telephone}. Email: ${data.email}.;
       const payTextOrange = payTextWave; // même message
 
       // éléments de paiement
