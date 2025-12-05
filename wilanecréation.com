@@ -1,4 +1,4 @@
-
+<html>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -421,4 +421,4 @@ Chaque service est facturé selon la demande du client, avec un travail rigoureu
 
   </script>
 </body>
-
+</html>
